@@ -21,7 +21,7 @@ const Footer = ({ theme }) => {
           </motion.p>
           <div className="flex space-x-4">
             <motion.a
-              href="https://github.com"
+              href="https://github.com/nilesh-r"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: 5 }}
@@ -35,7 +35,7 @@ const Footer = ({ theme }) => {
               <FiGithub size={20} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/nileshkumar08"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: -5 }}

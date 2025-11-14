@@ -34,8 +34,8 @@ const Projects = ({ theme }) => {
             description:
               'Built a sustainability platform featuring a carbon footprint calculator. Designed responsive UI with dark/light mode and animations (Framer Motion). Added geolocation-based climate tips and eco event listing for personalized engagement.',
             techStack: ['React.js', 'Node.js', 'MongoDB', 'Framer Motion', 'Vercel', 'Tailwind CSS'],
-            githubLink: 'https://github.com',
-            liveLink: 'https://vercel.com',
+            githubLink: 'https://github.com/nilesh-r/steeve.git',
+            liveLink: 'https://steeve-sage.vercel.app',
             image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop&auto=format',
           },
           {
@@ -44,8 +44,8 @@ const Projects = ({ theme }) => {
             description:
               'Built a modern personal portfolio website using React.js and Tailwind CSS. Designed a responsive UI with smooth animations and transitions powered by Framer Motion. Implemented modular and reusable components for scalability.',
             techStack: ['React.js', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
-            githubLink: 'https://github.com',
-            liveLink: 'https://vercel.com',
+            githubLink: 'https://github.com/nilesh-r/Nilesh-portfolio.git',
+            liveLink: 'https://nilesh-portfolio-beryl.vercel.app',
             image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop&auto=format',
           },
           {
@@ -54,8 +54,8 @@ const Projects = ({ theme }) => {
             description:
               'Built a responsive healthcare site with sections for services, appointments, and doctors. Implemented scroll-based animations and transitions using Framer Motion. Focused on mobile-first design and optimized performance.',
             techStack: ['React.js', 'Framer Motion', 'Tailwind CSS', 'Vercel'],
-            githubLink: 'https://github.com',
-            liveLink: 'https://vercel.com',
+            githubLink: 'https://github.com/nilesh-r/healthcare.git',
+            liveLink: 'https://healthcare-sigma-nine.vercel.app',
             image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop&auto=format',
           },
         ])

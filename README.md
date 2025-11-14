@@ -99,8 +99,6 @@ cp .env.example .env
 ```env
 PORT=5000
 MONGODB_URI=your-mongodb-connection-string
-EMAIL_USER=your-email@gmail.com (optional)
-EMAIL_PASS=your-app-password (optional)
 ```
 
 5. Start the server:

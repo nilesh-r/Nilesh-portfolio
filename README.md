@@ -1,6 +1,11 @@
 # Portfolio Website - React + Node.js
 
-A fully functional portfolio website built with React (frontend) and Node.js/Express (backend) for MaVionix Web Developer Intern assignment.
+A full-stack portfolio website built using React (frontend) and Node.js/Express (backend).
+
+# 🔗 Live Demo
+
+- Frontend: https://nilesh-portfolio-beryl.vercel.app/
+- Backend API: https://nilesh-portfolio-z9ii.onrender.com/
 
 ## 🚀 Features
 
@@ -99,8 +104,6 @@ cp .env.example .env
 ```env
 PORT=5000
 MONGODB_URI=your-mongodb-connection-string
-EMAIL_USER=your-email@gmail.com (optional)
-EMAIL_PASS=your-app-password (optional)
 ```
 
 5. Start the server:

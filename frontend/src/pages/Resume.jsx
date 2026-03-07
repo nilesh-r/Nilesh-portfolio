@@ -19,9 +19,8 @@ const Resume = ({ theme }) => {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center ${
-            theme === 'dark' ? 'text-white' : 'text-white'
-          }`}
+          className={`text-4xl md:text-5xl font-bold mb-12 text-center ${theme === 'dark' ? 'text-white' : 'text-white'
+            }`}
         >
           Resume
         </motion.h1>
@@ -30,31 +29,27 @@ const Resume = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className={`p-8 rounded-2xl ${
-            theme === 'dark' ? 'glass-dark' : 'glass-light'
-          } shadow-xl`}
+          className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+            } shadow-xl`}
         >
           <div className="text-center mb-8">
             <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-white/30 via-gray-200/30 to-white/30 p-1 border border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
               <div
-                className={`w-full h-full rounded-full ${
-                  theme === 'dark' ? 'bg-black/40' : 'bg-black/40'
-                } flex items-center justify-center text-4xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]`}
+                className={`w-full h-full rounded-full ${theme === 'dark' ? 'bg-black/40' : 'bg-black/40'
+                  } flex items-center justify-center text-4xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]`}
               >
                 NK
               </div>
             </div>
             <h2
-              className={`text-3xl font-bold mb-2 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
-              }`}
+              className={`text-3xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                }`}
             >
               Nilesh Kumar
             </h2>
             <p
-              className={`text-lg ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-              }`}
+              className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                }`}
             >
               Software Engineer, Web Developer & Full-Stack Developer
             </p>
@@ -62,19 +57,16 @@ const Resume = ({ theme }) => {
 
           {/* Resume Preview Section */}
           <div
-            className={`mb-8 p-6 rounded-lg border-2 border-dashed ${
-              theme === 'dark'
-                ? 'border-gray-700 bg-gray-900'
-                : 'border-gray-300 bg-gray-50'
-            }`}
+            className={`mb-8 p-6 rounded-lg ${theme === 'dark'
+                ? 'bg-gradient-to-r from-blue-900/30 via-purple-900/30 to-blue-900/30 border border-white/10'
+                : 'bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-blue-50/50 border border-gray-200'
+              }`}
           >
             <p
-              className={`text-center ${
-                theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-              }`}
+              className={`text-center font-medium ${theme === 'dark' ? 'text-blue-200' : 'text-blue-800'
+                }`}
             >
-              Resume PDF will be displayed here. Upload your resume.pdf file to the public folder
-              to enable preview.
+              Your professional resume is successfully uploaded and ready. Click the button below to download the latest PDF.
             </p>
           </div>
 
@@ -99,7 +91,7 @@ const Resume = ({ theme }) => {
             <p
               className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
             >
-              <strong>Phone:</strong> +918674892407
+              <strong>Phone:</strong> +91 8674892407
             </p>
             <p
               className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}

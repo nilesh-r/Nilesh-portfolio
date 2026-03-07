@@ -40,12 +40,11 @@ const Home = ({ theme }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-200'
-            }`}
+            className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto ${theme === 'dark' ? 'text-gray-400' : 'text-gray-200'
+              }`}
           >
-            Detail-oriented Web Developer with hands-on experience in full-stack development,
-            REST API integration, and building scalable, responsive web applications.
+            Building scalable, secure, and intelligent enterprise systems. Hands-on experience in full-stack development,
+            REST APIs, AI integrations, and modern frameworks (React.js, Spring Boot, FastAPI, Next.js).
           </motion.p>
 
           <motion.div

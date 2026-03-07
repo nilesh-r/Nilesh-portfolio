@@ -11,24 +11,30 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // Middleware
-app.use(cors())
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Restrict to frontend URL in production
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // MongoDB Connection
-const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  'mongodb+srv://nileshsahu8674:00008888@cluster0.lgt7xu0.mongodb.net/portfolio?retryWrites=true&w=majority'
+const MONGODB_URI = process.env.MONGODB_URI
 
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => {
-    console.log('✅ Connected to MongoDB')
-  })
+if (!MONGODB_URI) {
+  console.log('⚠️ No MONGODB_URI found in environment variables. Running without database. Some features may not work.')
+} else {
+  mongoose
+    .connect(MONGODB_URI)
+    .then(() => {
+      console.log('✅ Connected to MongoDB')
+    })
   .catch((error) => {
     console.error('❌ MongoDB connection error:', error)
     console.log('⚠️ Running without database. Some features may not work.')
   })
+}
 
 // Routes
 app.use('/api/contact', contactRoutes)

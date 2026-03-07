@@ -1,10 +1,9 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { FiChevronDown } from 'react-icons/fi'
 
-// Profile Image Component with multiple format support
-const ProfileImage = () => {
+const ProfileImage = ({ theme }) => {
   const [imageSrc, setImageSrc] = useState(null)
   const [showFallback, setShowFallback] = useState(true)
 
@@ -34,26 +33,30 @@ const ProfileImage = () => {
     tryNextImage()
   }, [])
 
+  const FallbackUI = () => (
+    <div
+      className={`absolute inset-0 w-full h-full rounded-full ${theme === 'dark' ? 'bg-black/40' : 'bg-black/40'
+        } flex items-center justify-center text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]`}
+    >
+      NK
+    </div>
+  )
+
   if (!imageSrc) {
-    return null
+    return <FallbackUI />
   }
 
   return (
-    <img
-      src={imageSrc}
-      alt="Nilesh Kumar"
-      className="w-full h-full rounded-full object-cover"
-      onError={() => {
-        setShowFallback(true)
-      }}
-      onLoad={() => {
-        setShowFallback(false)
-        const fallback = document.getElementById('initials-fallback')
-        if (fallback) {
-          fallback.style.display = 'none'
-        }
-      }}
-    />
+    <>
+      <img
+        src={imageSrc}
+        alt="Nilesh Kumar"
+        className={`w-full h-full rounded-full object-cover ${showFallback ? 'hidden' : 'block'}`}
+        onError={() => setShowFallback(true)}
+        onLoad={() => setShowFallback(false)}
+      />
+      {showFallback && <FallbackUI />}
+    </>
   )
 }
 
@@ -78,6 +81,10 @@ const About = ({ theme }) => {
     'RESTful APIs',
     'HTML5 & CSS3',
     'C/C++',
+    'FastAPI',
+    'Spring Boot',
+    'PostgreSQL',
+    'JWT',
 
   ]
 
@@ -91,6 +98,7 @@ const About = ({ theme }) => {
     'Agile & Scrum',
     'CI/CD',
     'Docker',
+    'Gemini AI',
   ]
 
   return (
@@ -99,9 +107,8 @@ const About = ({ theme }) => {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center ${
-            theme === 'dark' ? 'text-white' : 'text-white'
-          }`}
+          className={`text-4xl md:text-5xl font-bold mb-12 text-center ${theme === 'dark' ? 'text-white' : 'text-white'
+            }`}
         >
           About Me
         </motion.h1>
@@ -112,46 +119,34 @@ const About = ({ theme }) => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'glass-dark' : 'glass-light'
-            } shadow-xl`}
+            className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+              } shadow-xl`}
           >
             <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-r from-white/30 via-gray-200/30 to-white/30 p-1 border border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2)] overflow-hidden relative">
-              <ProfileImage />
-              <div
-                id="initials-fallback"
-                className={`absolute inset-0 w-full h-full rounded-full ${
-                  theme === 'dark' ? 'bg-black/40' : 'bg-black/40'
-                } flex items-center justify-center text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]`}
-              >
-                NK
-              </div>
+              <ProfileImage theme={theme} />
             </div>
             <h2
-              className={`text-2xl font-bold mb-4 text-center ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
-              }`}
+              className={`text-2xl font-bold mb-4 text-center ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                }`}
             >
               Nilesh Kumar
             </h2>
             <p
-              className={`text-lg leading-relaxed ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-              }`}
+              className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
             >
               Detail-oriented Web Developer and Computer Applications graduate with hands-on
-              experience in full-stack development, REST API integration, and database management.
-              Proficient in React.js, Node.js, JavaScript, Python, MongoDB, and Supabase, with
-              expertise in building scalable, responsive, and performance-optimized web
-              applications.
+              experience in full-stack development, REST API integration, and AI-driven applications.
+              Proficient across modern tech stacks including React.js, Node.js, Spring Boot, FastAPI, and Next.js, 
+              backed by robust database management using PostgreSQL, MongoDB, and Supabase.
             </p>
             <p
-              className={`text-lg leading-relaxed mt-4 ${
-                theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-              }`}
+              className={`text-lg leading-relaxed mt-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
             >
-              Strong collaborator with proven ability to deliver projects using Agile methodology,
-              version control (Git/GitHub), and cloud deployment (Vercel/CI/CD).
+              Passionate about building scalable, secure, and intelligent enterprise systems. 
+              Strong collaborator with a proven ability to deliver complete solutions using Agile methodologies,
+              Dockerized architectures, and automated cloud deployments (Vercel/Render).
             </p>
           </motion.div>
 
@@ -161,22 +156,19 @@ const About = ({ theme }) => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'glass-dark' : 'glass-light'
-            } shadow-xl`}
+            className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+              } shadow-xl`}
           >
             <h2
-              className={`text-2xl font-bold mb-6 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
-              }`}
+              className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                }`}
             >
               Skills & Technologies
             </h2>
             <div className="mb-8">
               <h3
-                className={`text-lg font-semibold mb-4 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                }`}
+                className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  }`}
               >
                 Programming Languages & Frameworks
               </h3>
@@ -197,9 +189,8 @@ const About = ({ theme }) => {
             </div>
             <div>
               <h3
-                className={`text-lg font-semibold mb-4 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-                }`}
+                className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                  }`}
               >
                 Tools & Platforms
               </h3>
@@ -211,11 +202,10 @@ const About = ({ theme }) => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: (skills.length + index) * 0.1 }}
                     whileHover={{ scale: 1.1 }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${
-                      theme === 'dark'
+                    className={`px-4 py-2 rounded-full text-sm font-medium ${theme === 'dark'
                         ? 'bg-gray-700 text-gray-200'
                         : 'bg-gray-200 text-gray-800'
-                    }`}
+                      }`}
                   >
                     {tool}
                   </motion.span>
@@ -230,23 +220,20 @@ const About = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`mt-12 p-8 rounded-2xl ${
-            theme === 'dark' ? 'glass-dark' : 'glass-light'
-          } shadow-xl`}
+          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+            } shadow-xl`}
         >
           <h2
-            className={`text-2xl font-bold mb-6 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-800'
-            }`}
+            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+              }`}
           >
             Experience
           </h2>
           <div className="space-y-6">
             {/* Internship 1 */}
             <motion.div
-              className={`border-l-2 border-white/30 pl-6 relative cursor-pointer transition-all ${
-                expandedExperience === 1 ? 'border-white/50' : ''
-              }`}
+              className={`border-l-2 border-white/30 pl-6 relative cursor-pointer transition-all ${expandedExperience === 1 ? 'border-white/50' : ''
+                }`}
               onClick={() => setExpandedExperience(expandedExperience === 1 ? null : 1)}
               whileHover={{ x: 5 }}
             >
@@ -254,23 +241,20 @@ const About = ({ theme }) => {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3
-                    className={`text-xl font-semibold mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-800'
-                    }`}
+                    className={`text-xl font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                      }`}
                   >
                     Web Developer Intern
                   </h3>
                   <p
-                    className={`text-lg font-medium mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                    }`}
+                    className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                      }`}
                   >
                     Labmentix Pvt. Ltd.
                   </p>
                   <p
-                    className={`text-sm mb-3 ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                    }`}
+                    className={`text-sm mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                      }`}
                   >
                     Feb '25 – Mar '25 | Pune, India (Remote)
                   </p>
@@ -295,9 +279,8 @@ const About = ({ theme }) => {
                   >
                     <div className="mt-4 pt-4 border-t border-white/10">
                       <h4
-                        className={`text-lg font-semibold mb-3 ${
-                          theme === 'dark' ? 'text-white' : 'text-gray-800'
-                        }`}
+                        className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                          }`}
                       >
                         Key Responsibilities:
                       </h4>
@@ -331,9 +314,8 @@ const About = ({ theme }) => {
                       </ul>
                       <div className="mt-4 pt-4 border-t border-white/10">
                         <h4
-                          className={`text-lg font-semibold mb-2 ${
-                            theme === 'dark' ? 'text-white' : 'text-gray-800'
-                          }`}
+                          className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                            }`}
                         >
                           Technologies Used:
                         </h4>
@@ -356,9 +338,8 @@ const About = ({ theme }) => {
 
             {/* Internship 2 */}
             <motion.div
-              className={`border-l-2 border-white/30 pl-6 relative cursor-pointer transition-all ${
-                expandedExperience === 2 ? 'border-white/50' : ''
-              }`}
+              className={`border-l-2 border-white/30 pl-6 relative cursor-pointer transition-all ${expandedExperience === 2 ? 'border-white/50' : ''
+                }`}
               onClick={() => setExpandedExperience(expandedExperience === 2 ? null : 2)}
               whileHover={{ x: 5 }}
             >
@@ -366,23 +347,20 @@ const About = ({ theme }) => {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3
-                    className={`text-xl font-semibold mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-800'
-                    }`}
+                    className={`text-xl font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                      }`}
                   >
                     Web Development Intern & Trainee
                   </h3>
                   <p
-                    className={`text-lg font-medium mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                    }`}
+                    className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                      }`}
                   >
                     Infotact Solutions Pvt. Ltd
                   </p>
                   <p
-                    className={`text-sm mb-3 ${
-                      theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                    }`}
+                    className={`text-sm mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                      }`}
                   >
                     May '25 – Aug '25 | India (Remote)
                   </p>
@@ -407,9 +385,8 @@ const About = ({ theme }) => {
                   >
                     <div className="mt-4 pt-4 border-t border-white/10">
                       <h4
-                        className={`text-lg font-semibold mb-3 ${
-                          theme === 'dark' ? 'text-white' : 'text-gray-800'
-                        }`}
+                        className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                          }`}
                       >
                         Key Responsibilities:
                       </h4>
@@ -444,9 +421,8 @@ const About = ({ theme }) => {
                       </ul>
                       <div className="mt-4 pt-4 border-t border-white/10">
                         <h4
-                          className={`text-lg font-semibold mb-2 ${
-                            theme === 'dark' ? 'text-white' : 'text-gray-800'
-                          }`}
+                          className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                            }`}
                         >
                           Technologies Used:
                         </h4>
@@ -474,26 +450,51 @@ const About = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className={`mt-12 p-8 rounded-2xl ${
-            theme === 'dark' ? 'glass-dark' : 'glass-light'
-          } shadow-xl`}
+          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+            } shadow-xl`}
         >
           <h2
-            className={`text-2xl font-bold mb-6 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-800'
-            }`}
+            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+              }`}
           >
             Certifications
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
             <motion.a
+              href="https://drive.google.com/file/d/18nYl_fTPFYcQmzhpmyYDe61qOSIjK16D/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.02, y: -5 }}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
+            >
+              <div className="flex items-start gap-3">
+                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1">
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    Microsoft Azure AI Essentials Professional Certificate
+                  </h3>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    Microsoft | Dec '25
+                  </p>
+                </div>
+                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
+            </motion.a>
+
+            <motion.a
               href="https://drive.google.com/file/d/1ZwsHYJGyvfuVl2__oQst-iejA2squuX9/view"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${
-                theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-              } transition-all cursor-pointer`}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
             >
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
@@ -520,9 +521,8 @@ const About = ({ theme }) => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${
-                theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-              } transition-all cursor-pointer`}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
             >
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
@@ -549,9 +549,8 @@ const About = ({ theme }) => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${
-                theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-              } transition-all cursor-pointer`}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
             >
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
@@ -578,9 +577,8 @@ const About = ({ theme }) => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${
-                theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-              } transition-all cursor-pointer`}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
             >
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
@@ -607,9 +605,8 @@ const About = ({ theme }) => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${
-                theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-              } transition-all cursor-pointer`}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
             >
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
@@ -636,9 +633,8 @@ const About = ({ theme }) => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${
-                theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-              } transition-all cursor-pointer`}
+              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                } transition-all cursor-pointer`}
             >
               <div className="flex items-start gap-3">
                 <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
@@ -667,23 +663,20 @@ const About = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className={`mt-12 p-8 rounded-2xl ${
-            theme === 'dark' ? 'glass-dark' : 'glass-light'
-          } shadow-xl`}
+          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+            } shadow-xl`}
         >
           <h2
-            className={`text-2xl font-bold mb-6 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-800'
-            }`}
+            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+              }`}
           >
             Education
           </h2>
           <div className="space-y-4">
             <div>
               <h3
-                className={`text-xl font-semibold ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-800'
-                }`}
+                className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                  }`}
               >
                 Bachelor in Computer Applications (BCA)
               </h3>
@@ -695,9 +688,8 @@ const About = ({ theme }) => {
             </div>
             <div>
               <h3
-                className={`text-xl font-semibold ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-800'
-                }`}
+                className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                  }`}
               >
                 Intermediate (Science)
               </h3>

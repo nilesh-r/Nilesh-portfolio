@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 import axios from 'axios'
 
 const Contact = ({ theme }) => {
@@ -93,7 +94,7 @@ const Contact = ({ theme }) => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+                <div className="p-3 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-full border border-white/30 backdrop-blur-sm">
                   <FiPhone className="text-white" size={20} />
                 </div>
                 <div>
@@ -113,7 +114,7 @@ const Contact = ({ theme }) => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+                <div className="p-3 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-full border border-white/30 backdrop-blur-sm">
                   <FiMapPin className="text-white" size={20} />
                 </div>
                 <div>
@@ -129,6 +130,30 @@ const Contact = ({ theme }) => {
                   >
                     Spice garden Marathahalli, Bengaluru, Karnataka, 560037, India
                   </p>
+                </div>
+              </div>
+              
+              {/* WhatsApp Button */}
+              <div className="flex items-start gap-4 mt-6">
+                <div className="p-3 bg-gradient-to-r from-green-500/20 via-green-400/20 to-green-500/20 rounded-full border border-green-500/30 backdrop-blur-sm">
+                  <FaWhatsapp className="text-green-500" size={20} />
+                </div>
+                <div>
+                  <h3
+                    className={`font-semibold mb-1 ${
+                      theme === 'dark' ? 'text-white' : 'text-gray-800'
+                    }`}
+                  >
+                    WhatsApp
+                  </h3>
+                  <a
+                    href="https://wa.me/918674892407?text=Hi%20Nilesh,%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect!"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} hover:text-green-500 transition-colors font-medium cursor-pointer`}
+                  >
+                    Chat directly
+                  </a>
                 </div>
               </div>
             </div>

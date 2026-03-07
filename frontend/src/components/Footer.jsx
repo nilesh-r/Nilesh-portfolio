@@ -29,7 +29,7 @@ const Footer = ({ theme }) => {
               className={`p-2 rounded-full ${
                 theme === 'dark'
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
               } transition-colors`}
             >
               <FiGithub size={20} />
@@ -43,7 +43,7 @@ const Footer = ({ theme }) => {
               className={`p-2 rounded-full ${
                 theme === 'dark'
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
               } transition-colors`}
             >
               <FiLinkedin size={20} />
@@ -55,7 +55,7 @@ const Footer = ({ theme }) => {
               className={`p-2 rounded-full ${
                 theme === 'dark'
                   ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
               } transition-colors`}
             >
               <FiMail size={20} />

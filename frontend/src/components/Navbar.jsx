@@ -41,8 +41,6 @@ const Navbar = ({ theme, toggleTheme }) => {
                 className={`relative px-3 py-2 transition-colors ${
                   location.pathname === item.path
                     ? 'text-white font-semibold'
-                    : theme === 'dark'
-                    ? 'text-gray-300 hover:text-white'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -62,7 +60,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               className={`p-2 rounded-full backdrop-blur-sm ${
                 theme === 'dark'
                   ? 'bg-black/30 text-yellow-400 border border-yellow-400/30'
-                  : 'bg-white/30 text-gray-800 border border-gray-800/30'
+                  : 'bg-white/10 text-white border border-white/30 hover:bg-white/20'
               }`}
             >
               {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
@@ -78,7 +76,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               className={`p-2 rounded-full backdrop-blur-sm ${
                 theme === 'dark'
                   ? 'bg-black/30 text-yellow-400 border border-yellow-400/30'
-                  : 'bg-white/30 text-gray-800 border border-gray-800/30'
+                  : 'bg-white/10 text-white border border-white/30 hover:bg-white/20'
               }`}
             >
               {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
@@ -90,7 +88,7 @@ const Navbar = ({ theme, toggleTheme }) => {
               className={`p-2 rounded-lg backdrop-blur-sm ${
                 theme === 'dark'
                   ? 'text-white bg-black/30 border border-white/20'
-                  : 'text-gray-800 bg-white/30 border border-gray-800/20'
+                  : 'text-white bg-white/10 border border-white/20 hover:bg-white/20'
               }`}
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}

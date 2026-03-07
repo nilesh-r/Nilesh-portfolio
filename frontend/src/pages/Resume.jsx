@@ -58,15 +58,15 @@ const Resume = ({ theme }) => {
           {/* Resume Preview Section */}
           <div
             className={`mb-8 p-6 rounded-lg ${theme === 'dark'
-                ? 'bg-gradient-to-r from-blue-900/30 via-purple-900/30 to-blue-900/30 border border-white/10'
-                : 'bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-blue-50/50 border border-gray-200'
+              ? 'bg-gradient-to-r from-blue-900/30 via-purple-900/30 to-blue-900/30 border border-white/10'
+              : 'bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-blue-50/50 border border-gray-200'
               }`}
           >
             <p
               className={`text-center font-medium ${theme === 'dark' ? 'text-blue-200' : 'text-blue-800'
                 }`}
             >
-              Your professional resume is successfully uploaded and ready. Click the button below to download the latest PDF.
+              Click the button below to download the latest PDF.
             </p>
           </div>
 

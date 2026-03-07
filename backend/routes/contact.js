@@ -35,26 +35,23 @@ router.post('/', async (req, res) => {
 
     // Send email (optional - only if credentials are configured)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      try {
-        const mailOptions = {
-          from: process.env.EMAIL_USER,
-          to: 'nileshsahu8674@gmail.com',
-          subject: `New Contact Form Submission from ${name}`,
-          html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
-          `,
-        }
-
-        await transporter.sendMail(mailOptions)
-        console.log('✅ Email sent successfully')
-      } catch (emailError) {
-        console.log('⚠️  Email not sent:', emailError.message)
-        // Continue even if email fails
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: 'nileshsahu8674@gmail.com',
+        subject: `New Contact Form Submission from ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
       }
+
+      // Send email asynchronously so we don't block the API response
+      transporter.sendMail(mailOptions)
+        .then(() => console.log('✅ Email sent successfully'))
+        .catch(emailError => console.log('⚠️  Email not sent:', emailError.message))
     }
 
     res.status(200).json({

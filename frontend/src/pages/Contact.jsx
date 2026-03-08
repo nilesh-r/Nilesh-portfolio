@@ -49,7 +49,7 @@ const Contact = ({ theme }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className={`text-4xl md:text-5xl font-bold mb-12 text-center ${
-            theme === 'dark' ? 'text-white' : 'text-white'
+            theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-500' : theme === 'superman' ? 'text-red-500' : 'text-gray-900'
           }`}
         >
           Get In Touch
@@ -62,25 +62,33 @@ const Contact = ({ theme }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'glass-dark' : 'glass-light'
+              theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
             } shadow-xl`}
           >
             <h2
               className={`text-2xl font-bold mb-6 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
+                theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
               }`}
             >
               Contact Information
             </h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-full border border-white/30 backdrop-blur-sm">
-                  <FiMail className="text-white" size={20} />
+                <div className={`p-3 rounded-full border backdrop-blur-sm ${
+                  theme === 'dark' 
+                    ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 border-white/30'
+                    : theme === 'marvel'
+                    ? 'bg-gradient-to-r from-red-600/40 via-red-500/40 to-red-600/40 border-red-500/50'
+                    : theme === 'superman'
+                    ? 'bg-gradient-to-r from-blue-600/40 via-blue-500/40 to-blue-600/40 border-blue-500/50'
+                    : 'bg-indigo-100 border-indigo-200'
+                }`}>
+                  <FiMail className={theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-indigo-600'} size={20} />
                 </div>
                 <div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-800'
+                      theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-gray-800'
                     }`}
                   >
                     Email
@@ -94,13 +102,21 @@ const Contact = ({ theme }) => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-full border border-white/30 backdrop-blur-sm">
-                  <FiPhone className="text-white" size={20} />
+                <div className={`p-3 rounded-full border backdrop-blur-sm ${
+                  theme === 'dark' 
+                    ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 border-white/30'
+                    : theme === 'marvel'
+                    ? 'bg-gradient-to-r from-red-600/40 via-red-500/40 to-red-600/40 border-red-500/50'
+                    : theme === 'superman'
+                    ? 'bg-gradient-to-r from-blue-600/40 via-blue-500/40 to-blue-600/40 border-blue-500/50'
+                    : 'bg-indigo-100 border-indigo-200'
+                }`}>
+                  <FiPhone className={theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-indigo-600'} size={20} />
                 </div>
                 <div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-800'
+                      theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-gray-800'
                     }`}
                   >
                     Phone
@@ -114,13 +130,21 @@ const Contact = ({ theme }) => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="p-3 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-full border border-white/30 backdrop-blur-sm">
-                  <FiMapPin className="text-white" size={20} />
+                <div className={`p-3 rounded-full border backdrop-blur-sm ${
+                  theme === 'dark' 
+                    ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 border-white/30'
+                    : theme === 'marvel'
+                    ? 'bg-gradient-to-r from-red-600/40 via-red-500/40 to-red-600/40 border-red-500/50'
+                    : theme === 'superman'
+                    ? 'bg-gradient-to-r from-blue-600/40 via-blue-500/40 to-blue-600/40 border-blue-500/50'
+                    : 'bg-indigo-100 border-indigo-200'
+                }`}>
+                  <FiMapPin className={theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-indigo-600'} size={20} />
                 </div>
                 <div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-800'
+                      theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-gray-800'
                     }`}
                   >
                     Location
@@ -141,7 +165,7 @@ const Contact = ({ theme }) => {
                 <div>
                   <h3
                     className={`font-semibold mb-1 ${
-                      theme === 'dark' ? 'text-white' : 'text-gray-800'
+                      theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-red-400' : 'text-gray-800'
                     }`}
                   >
                     WhatsApp
@@ -150,7 +174,7 @@ const Contact = ({ theme }) => {
                     href="https://wa.me/918674892407?text=Hi%20Nilesh,%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect!"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} hover:text-green-500 transition-colors font-medium cursor-pointer`}
+                    className={`${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-300' : 'text-gray-600'} hover:text-green-500 transition-colors font-medium cursor-pointer`}
                   >
                     Chat directly
                   </a>
@@ -165,12 +189,12 @@ const Contact = ({ theme }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className={`p-8 rounded-2xl ${
-              theme === 'dark' ? 'glass-dark' : 'glass-light'
+              theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
             } shadow-xl`}
           >
             <h2
               className={`text-2xl font-bold mb-6 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-800'
+                theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
               }`}
             >
               Send a Message
@@ -180,7 +204,7 @@ const Contact = ({ theme }) => {
                 <label
                   htmlFor="name"
                   className={`block mb-2 font-semibold ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-700'
                   }`}
                 >
                   Name
@@ -192,11 +216,15 @@ const Contact = ({ theme }) => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className={`w-full px-4 py-3 rounded-lg border backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 rounded-lg border backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 ${
                     theme === 'dark'
                       ? 'bg-black/20 border-white/20 text-white placeholder-gray-400'
-                      : 'bg-white/30 border-white/40 text-gray-800'
-                  } focus:outline-none focus:ring-2 focus:ring-purple-500`}
+                      : theme === 'marvel'
+                      ? 'bg-red-900/30 border-red-500/50 text-yellow-500 placeholder-yellow-500/50 focus:ring-red-500'
+                      : theme === 'superman'
+                      ? 'bg-blue-900/30 border-blue-500/50 text-yellow-400 placeholder-yellow-200/50 focus:ring-blue-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 shadow-sm'
+                  }`}
                   placeholder="Your Name"
                 />
               </div>
@@ -204,7 +232,7 @@ const Contact = ({ theme }) => {
                 <label
                   htmlFor="email"
                   className={`block mb-2 font-semibold ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-700'
                   }`}
                 >
                   Email
@@ -216,11 +244,15 @@ const Contact = ({ theme }) => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className={`w-full px-4 py-3 rounded-lg border backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 rounded-lg border backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 ${
                     theme === 'dark'
                       ? 'bg-black/20 border-white/20 text-white placeholder-gray-400'
-                      : 'bg-white/30 border-white/40 text-gray-800'
-                  } focus:outline-none focus:ring-2 focus:ring-purple-500`}
+                      : theme === 'marvel'
+                      ? 'bg-red-900/30 border-red-500/50 text-yellow-500 placeholder-yellow-500/50 focus:ring-red-500'
+                      : theme === 'superman'
+                      ? 'bg-blue-900/30 border-blue-500/50 text-yellow-400 placeholder-yellow-200/50 focus:ring-blue-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 shadow-sm'
+                  }`}
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -228,7 +260,7 @@ const Contact = ({ theme }) => {
                 <label
                   htmlFor="message"
                   className={`block mb-2 font-semibold ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-700'
                   }`}
                 >
                   Message
@@ -240,11 +272,15 @@ const Contact = ({ theme }) => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className={`w-full px-4 py-3 rounded-lg border backdrop-blur-sm ${
+                  className={`w-full px-4 py-3 rounded-lg border backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none ${
                     theme === 'dark'
                       ? 'bg-black/20 border-white/20 text-white placeholder-gray-400'
-                      : 'bg-white/30 border-white/40 text-gray-800'
-                  } focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none`}
+                      : theme === 'marvel'
+                      ? 'bg-red-900/30 border-red-500/50 text-yellow-500 placeholder-yellow-500/50 focus:ring-red-500'
+                      : theme === 'superman'
+                      ? 'bg-blue-900/30 border-blue-500/50 text-yellow-400 placeholder-yellow-200/50 focus:ring-blue-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 shadow-sm'
+                  }`}
                   placeholder="Your message here..."
                 />
               </div>
@@ -264,7 +300,15 @@ const Contact = ({ theme }) => {
                 disabled={loading}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white rounded-full font-semibold hover:shadow-xl hover:shadow-white/30 border border-white/30 backdrop-blur-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:from-white/30 hover:via-gray-200/30 hover:to-white/30"
+                className={`w-full flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold backdrop-blur-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  theme === 'dark'
+                    ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white border border-white/30 hover:shadow-xl hover:shadow-white/30 hover:from-white/30 hover:via-gray-200/30 hover:to-white/30'
+                    : theme === 'marvel'
+                    ? 'bg-gradient-to-r from-red-600/50 via-red-500/50 to-red-600/50 text-yellow-400 border border-red-500/50 hover:shadow-lg hover:shadow-red-500/30'
+                    : theme === 'superman'
+                    ? 'bg-gradient-to-r from-blue-600/50 via-blue-500/50 to-blue-600/50 text-yellow-400 border border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/30'
+                    : 'bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 text-white shadow hover:shadow-lg'
+                }`}
               >
                 <FiSend size={20} />
                 {loading ? 'Sending...' : 'Send Message'}

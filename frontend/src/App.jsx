@@ -9,17 +9,19 @@ import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import CursorLight from './components/CursorLight'
 import ClickRipple from './components/ClickRipple'
+import IronManHUD from './components/themes/IronManHUD'
 
 function App() {
   const [theme, setTheme] = useState('dark')
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark')
+    setTheme(prev => prev === 'dark' ? 'light' : prev === 'light' ? 'marvel' : prev === 'marvel' ? 'superman' : 'dark')
   }
 
   return (
     <Router>
-      <div className={`min-h-screen ${theme === 'dark' ? 'dark-theme' : 'light-theme'}`}>
+      <div className={`min-h-screen ${theme}-theme`}>
+        {theme === 'marvel' && <IronManHUD />}
         <CursorLight theme={theme} />
         <ClickRipple />
         <Navbar theme={theme} toggleTheme={toggleTheme} />

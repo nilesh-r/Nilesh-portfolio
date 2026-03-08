@@ -16,8 +16,13 @@ A full-stack portfolio website built using React (frontend) and Node.js/Express 
 - ✅ **Resume Page** - Resume download functionality
 - ✅ **Contact Page** - Contact form with name, email, and message fields
 - ✅ **Responsive Design** - Mobile, tablet, and laptop compatible
-- ✅ **Dark/Light Theme Toggle** - Modern UI with gradient themes
-- ✅ **Smooth Animations** - Powered by Framer Motion
+- ✅ **Multi-Theme System** - Toggle between four distinct themes:
+  - **Dark Theme** - Sleek, professional dark mode with radial glows.
+  - **Light Theme** - Bright, clean professional layout.
+  - **Marvel/Iron Man Theme** - High-tech J.A.R.V.I.S HUD animations with arc-reactor pulsing effects.
+  - **Superman Theme** - Heroic background with Fortress of Solitude color palette and crystalline glows.
+- ✅ **Animated HUD UI** - Custom CSS-based holographic animations for the Marvel theme.
+- ✅ **Smooth Animations** - Powered by Framer Motion and custom CSS keyframes.
 
 ### Backend (Node.js + Express)
 - ✅ **Contact Form API** - POST `/api/contact` endpoint

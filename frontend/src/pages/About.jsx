@@ -35,8 +35,14 @@ const ProfileImage = ({ theme }) => {
 
   const FallbackUI = () => (
     <div
-      className={`absolute inset-0 w-full h-full rounded-full ${theme === 'dark' ? 'bg-black/40' : 'bg-black/40'
-        } flex items-center justify-center text-6xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]`}
+      className={`absolute inset-0 w-full h-full rounded-full ${theme === 'dark' ? 'bg-black/40' : theme === 'marvel' ? 'bg-red-900/60' : theme === 'superman' ? 'bg-blue-900/60' : 'bg-gray-200/60'
+        } flex items-center justify-center text-6xl font-bold ${
+          theme === 'dark'
+            ? 'bg-gradient-to-r from-white via-gray-200 to-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]'
+            : theme === 'marvel'
+            ? 'bg-gradient-to-r from-red-500 via-yellow-400 to-red-500 drop-shadow-[0_0_10px_rgba(239,68,68,0.5)]'
+            : 'bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 drop-shadow-[0_0_10px_rgba(0,0,0,0.1)]'
+        } bg-clip-text text-transparent`}
     >
       NK
     </div>
@@ -107,7 +113,7 @@ const About = ({ theme }) => {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center ${theme === 'dark' ? 'text-white' : 'text-white'
+          className={`text-4xl md:text-5xl font-bold mb-12 text-center ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-500' : theme === 'superman' ? 'text-red-500' : 'text-gray-900'
             }`}
         >
           About Me
@@ -119,20 +125,20 @@ const About = ({ theme }) => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+            className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
               } shadow-xl`}
           >
             <div className="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-r from-white/30 via-gray-200/30 to-white/30 p-1 border border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.2)] overflow-hidden relative">
               <ProfileImage theme={theme} />
             </div>
             <h2
-              className={`text-2xl font-bold mb-4 text-center ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+              className={`text-2xl font-bold mb-4 text-center ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                 }`}
             >
               Nilesh Kumar
             </h2>
             <p
-              className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-200' : theme === 'superman' ? 'text-gray-200' : 'text-gray-700'
                 }`}
             >
               Detail-oriented Web Developer and Computer Applications graduate with hands-on
@@ -141,7 +147,7 @@ const About = ({ theme }) => {
               backed by robust database management using PostgreSQL, MongoDB, and Supabase.
             </p>
             <p
-              className={`text-lg leading-relaxed mt-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              className={`text-lg leading-relaxed mt-4 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-200' : theme === 'superman' ? 'text-gray-200' : 'text-gray-700'
                 }`}
             >
               Passionate about building scalable, secure, and intelligent enterprise systems. 
@@ -156,18 +162,18 @@ const About = ({ theme }) => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+            className={`p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
               } shadow-xl`}
           >
             <h2
-              className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+              className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                 }`}
             >
               Skills & Technologies
             </h2>
             <div className="mb-8">
               <h3
-                className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-200' : theme === 'superman' ? 'text-gray-200' : 'text-gray-700'
                   }`}
               >
                 Programming Languages & Frameworks
@@ -180,7 +186,15 @@ const About = ({ theme }) => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.1 }}
-                    className="px-4 py-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white rounded-full text-sm font-medium border border-white/30 backdrop-blur-sm"
+                    className={`px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm ${
+                      theme === 'dark'
+                        ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white border border-white/30'
+                        : theme === 'marvel'
+                        ? 'bg-red-900/40 text-yellow-400 border border-red-500/50'
+                        : theme === 'superman'
+                        ? 'bg-blue-900/40 text-red-500 border border-blue-500/50'
+                        : 'bg-purple-100 text-purple-700 border border-purple-200'
+                    }`}
                   >
                     {skill}
                   </motion.span>
@@ -189,7 +203,7 @@ const About = ({ theme }) => {
             </div>
             <div>
               <h3
-                className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                className={`text-lg font-semibold mb-4 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-200' : theme === 'superman' ? 'text-gray-200' : 'text-gray-700'
                   }`}
               >
                 Tools & Platforms
@@ -204,7 +218,11 @@ const About = ({ theme }) => {
                     whileHover={{ scale: 1.1 }}
                     className={`px-4 py-2 rounded-full text-sm font-medium ${theme === 'dark'
                         ? 'bg-gray-700 text-gray-200'
-                        : 'bg-gray-200 text-gray-800'
+                        : theme === 'marvel'
+                        ? 'bg-red-800 text-yellow-300'
+                        : theme === 'superman'
+                        ? 'bg-blue-800 text-red-300'
+                        : 'bg-blue-100 text-blue-700'
                       }`}
                   >
                     {tool}
@@ -220,11 +238,11 @@ const About = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
             } shadow-xl`}
         >
           <h2
-            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
               }`}
           >
             Experience
@@ -237,23 +255,31 @@ const About = ({ theme }) => {
               onClick={() => setExpandedExperience(expandedExperience === 1 ? null : 1)}
               whileHover={{ x: 5 }}
             >
-              <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-white/30 to-white/20 border-2 border-white/40"></div>
+              <div className={`absolute -left-2 top-0 w-4 h-4 rounded-full border-2 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-r from-white/30 to-white/20 border-white/40'
+                  : theme === 'marvel'
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 border-red-400'
+                  : theme === 'superman'
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 border-red-500'
+                  : 'bg-gradient-to-r from-purple-400 to-purple-500 border-purple-200'
+              }`}></div>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3
-                    className={`text-xl font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                    className={`text-xl font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                       }`}
                   >
                     Web Developer Intern
                   </h3>
                   <p
-                    className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                    className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-200' : theme === 'superman' ? 'text-gray-200' : 'text-gray-600'
                       }`}
                   >
                     Labmentix Pvt. Ltd.
                   </p>
                   <p
-                    className={`text-sm mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                    className={`text-sm mb-3 ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-red-200' : 'text-gray-500'
                       }`}
                   >
                     Feb '25 – Mar '25 | Pune, India (Remote)
@@ -262,7 +288,7 @@ const About = ({ theme }) => {
                 <motion.div
                   animate={{ rotate: expandedExperience === 1 ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className={`mt-1 ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}
+                  className={`mt-1 ${theme === 'dark' ? 'text-white/60' : theme === 'marvel' ? 'text-yellow-500' : theme === 'superman' ? 'text-red-500' : 'text-purple-600'}`}
                 >
                   <FiChevronDown size={24} />
                 </motion.div>
@@ -279,12 +305,12 @@ const About = ({ theme }) => {
                   >
                     <div className="mt-4 pt-4 border-t border-white/10">
                       <h4
-                        className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                        className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                           }`}
                       >
                         Key Responsibilities:
                       </h4>
-                      <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-blue-100' : 'text-gray-600'}`}>
                         <li className="flex items-start gap-3">
                           <span className="text-white/60 mt-1 text-lg">•</span>
                           <span>
@@ -295,17 +321,17 @@ const About = ({ theme }) => {
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <span className="text-white/60 mt-1 text-lg">•</span>
+                          <span className={`${theme === 'dark' ? 'text-white/60' : 'text-purple-500'} mt-1 text-lg`}>•</span>
                           <span>
-                            <strong className="text-white">UI/UX Enhancement:</strong> Enhanced
+                            <strong className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>UI/UX Enhancement:</strong> Enhanced
                             UI/UX design, improving user engagement and reducing bounce rate by 25%.
                             Implemented responsive design principles and modern web standards.
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <span className="text-white/60 mt-1 text-lg">•</span>
+                          <span className={`${theme === 'dark' ? 'text-white/60' : theme === 'marvel' ? 'text-yellow-600' : theme === 'superman' ? 'text-red-600' : 'text-purple-500'} mt-1 text-lg`}>•</span>
                           <span>
-                            <strong className="text-white">Team Collaboration:</strong> Collaborated
+                            <strong className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Team Collaboration:</strong> Collaborated
                             with cross-functional team using Agile methodology and version control
                             (GitHub). Participated in daily standups, sprint planning, and code
                             reviews.
@@ -314,7 +340,7 @@ const About = ({ theme }) => {
                       </ul>
                       <div className="mt-4 pt-4 border-t border-white/10">
                         <h4
-                          className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                          className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                             }`}
                         >
                           Technologies Used:
@@ -343,23 +369,31 @@ const About = ({ theme }) => {
               onClick={() => setExpandedExperience(expandedExperience === 2 ? null : 2)}
               whileHover={{ x: 5 }}
             >
-              <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gradient-to-r from-white/30 to-white/20 border-2 border-white/40"></div>
+              <div className={`absolute -left-2 top-0 w-4 h-4 rounded-full border-2 ${
+                theme === 'dark'
+                  ? 'bg-gradient-to-r from-white/30 to-white/20 border-white/40'
+                  : theme === 'marvel'
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 border-red-400'
+                  : theme === 'superman'
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 border-red-500'
+                  : 'bg-gradient-to-r from-purple-400 to-purple-500 border-purple-200'
+              }`}></div>
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3
-                    className={`text-xl font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                    className={`text-xl font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                       }`}
                   >
                     Web Development Intern & Trainee
                   </h3>
                   <p
-                    className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                    className={`text-lg font-medium mb-2 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-200' : theme === 'superman' ? 'text-gray-200' : 'text-gray-600'
                       }`}
                   >
                     Infotact Solutions Pvt. Ltd
                   </p>
                   <p
-                    className={`text-sm mb-3 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                    className={`text-sm mb-3 ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-red-200' : 'text-gray-500'
                       }`}
                   >
                     May '25 – Aug '25 | India (Remote)
@@ -368,7 +402,7 @@ const About = ({ theme }) => {
                 <motion.div
                   animate={{ rotate: expandedExperience === 2 ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className={`mt-1 ${theme === 'dark' ? 'text-white/60' : 'text-gray-600'}`}
+                  className={`mt-1 ${theme === 'dark' ? 'text-white/60' : theme === 'marvel' ? 'text-yellow-500' : theme === 'superman' ? 'text-red-500' : 'text-purple-600'}`}
                 >
                   <FiChevronDown size={24} />
                 </motion.div>
@@ -385,12 +419,12 @@ const About = ({ theme }) => {
                   >
                     <div className="mt-4 pt-4 border-t border-white/10">
                       <h4
-                        className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                        className={`text-lg font-semibold mb-3 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                           }`}
                       >
                         Key Responsibilities:
                       </h4>
-                      <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                      <ul className={`space-y-3 ${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-blue-100' : 'text-gray-600'}`}>
                         <li className="flex items-start gap-3">
                           <span className="text-white/60 mt-1 text-lg">•</span>
                           <span>
@@ -410,9 +444,9 @@ const About = ({ theme }) => {
                           </span>
                         </li>
                         <li className="flex items-start gap-3">
-                          <span className="text-white/60 mt-1 text-lg">•</span>
+                          <span className={`${theme === 'dark' ? 'text-white/60' : 'text-purple-500'} mt-1 text-lg`}>•</span>
                           <span>
-                            <strong className="text-white">Problem Solving:</strong> Applied
+                            <strong className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>Problem Solving:</strong> Applied
                             concepts of responsive design, dynamic websites, and problem-solving.
                             Debugged and fixed issues, optimized performance, and ensured
                             cross-browser compatibility.
@@ -421,7 +455,7 @@ const About = ({ theme }) => {
                       </ul>
                       <div className="mt-4 pt-4 border-t border-white/10">
                         <h4
-                          className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                          className={`text-lg font-semibold mb-2 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
                             }`}
                         >
                           Technologies Used:
@@ -450,11 +484,11 @@ const About = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
             } shadow-xl`}
         >
           <h2
-            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
               }`}
           >
             Certifications
@@ -475,10 +509,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     Microsoft Azure AI Essentials Professional Certificate
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     Microsoft | Dec '25
                   </p>
                 </div>
@@ -503,10 +537,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     Angular Course
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     Infosys Springboard | Oct '25
                   </p>
                 </div>
@@ -531,10 +565,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     Agile Scrum in Practice
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     Infosys Springboard | Oct '25
                   </p>
                 </div>
@@ -559,10 +593,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     AINACT 2025
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     Noukri.com | May '25
                   </p>
                 </div>
@@ -587,10 +621,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     Web Developer Internship
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     Infotact Solutions Pvt Ltd | Aug '25
                   </p>
                 </div>
@@ -615,10 +649,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     PowerBI Workshop
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     officeMaster | Apr '25
                   </p>
                 </div>
@@ -643,10 +677,10 @@ const About = ({ theme }) => {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
                     Web Developer Internship
                   </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
                     Labmentix Pvt Ltd | Mar '25
                   </p>
                 </div>
@@ -663,11 +697,11 @@ const About = ({ theme }) => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : 'glass-light'
+          className={`mt-12 p-8 rounded-2xl ${theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
             } shadow-xl`}
         >
           <h2
-            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+            className={`text-2xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-400' : theme === 'superman' ? 'text-blue-500' : 'text-gray-800'
               }`}
           >
             Education
@@ -675,26 +709,26 @@ const About = ({ theme }) => {
           <div className="space-y-4">
             <div>
               <h3
-                className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'
                   }`}
               >
                 Bachelor in Computer Applications (BCA)
               </h3>
               <p
-                className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
+                className={`${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-blue-100' : 'text-gray-600'}`}
               >
                 Bengaluru North University | GPA: 7.23 | Jul '22 – Jul '25
               </p>
             </div>
             <div>
               <h3
-                className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'
                   }`}
               >
                 Intermediate (Science)
               </h3>
               <p
-                className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
+                className={`${theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-blue-100' : 'text-gray-600'}`}
               >
                 Vinoba Bhave University | GPA: 61.08 | Apr '20 – Apr '21
               </p>

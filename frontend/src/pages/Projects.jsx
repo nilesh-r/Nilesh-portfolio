@@ -112,7 +112,7 @@ const Projects = ({ theme }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className={`text-4xl md:text-5xl font-bold mb-12 text-center ${
-            theme === 'dark' ? 'text-white' : 'text-white'
+            theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-yellow-500' : theme === 'superman' ? 'text-red-500' : 'text-gray-900'
           }`}
         >
           My Projects
@@ -127,7 +127,7 @@ const Projects = ({ theme }) => {
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10, scale: 1.02 }}
               className={`rounded-2xl overflow-hidden shadow-xl ${
-                theme === 'dark' ? 'glass-dark' : 'glass-light'
+                theme === 'dark' ? 'glass-dark' : theme === 'marvel' ? 'glass-marvel' : theme === 'superman' ? 'glass-superman' : 'glass-light'
               }`}
             >
               <div className="h-48 bg-gradient-to-r from-white/10 via-gray-200/10 to-white/10 relative overflow-hidden border-b border-white/20">
@@ -144,14 +144,14 @@ const Projects = ({ theme }) => {
               <div className="p-6">
                 <h3
                   className={`text-xl font-bold mb-3 ${
-                    theme === 'dark' ? 'text-white' : 'text-gray-800'
+                    theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-white' : 'text-gray-800'
                   }`}
                 >
                   {project.title}
                 </h3>
                 <p
                   className={`mb-4 ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                    theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-600'
                   }`}
                 >
                   {project.description}
@@ -159,7 +159,7 @@ const Projects = ({ theme }) => {
                 <div className="mb-4">
                   <h4
                     className={`text-sm font-semibold mb-2 ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                      theme === 'dark' ? 'text-gray-300' : theme === 'marvel' ? 'text-yellow-100' : theme === 'superman' ? 'text-red-300' : 'text-gray-700'
                     }`}
                   >
                     Tech Stack:
@@ -168,7 +168,15 @@ const Projects = ({ theme }) => {
                     {project.techStack?.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white rounded border border-white/20 backdrop-blur-sm"
+                        className={`px-2 py-1 text-xs rounded border backdrop-blur-sm ${
+                          theme === 'dark'
+                            ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white border-white/20'
+                            : theme === 'marvel'
+                            ? 'bg-gradient-to-r from-red-600/40 via-red-500/40 to-red-600/40 text-yellow-400 border-red-500/50'
+                            : theme === 'superman'
+                            ? 'bg-gradient-to-r from-blue-600/40 via-blue-500/40 to-blue-600/40 text-yellow-300 border-blue-500/50'
+                            : 'bg-purple-100 text-purple-700 border-purple-200'
+                        }`}
                       >
                         {tech}
                       </span>
@@ -182,7 +190,15 @@ const Projects = ({ theme }) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 backdrop-blur-sm bg-black/30 border border-white/20 text-white rounded-lg hover:bg-black/50 transition-all"
+                    className={`flex items-center gap-2 px-4 py-2 backdrop-blur-sm rounded-lg transition-all ${
+                      theme === 'dark'
+                        ? 'bg-black/30 border border-white/20 text-white hover:bg-black/50'
+                        : theme === 'marvel'
+                        ? 'bg-red-900/30 border border-red-500/50 text-yellow-500 hover:bg-red-900/60 shadow-[0_0_10px_rgba(239,68,68,0.2)]'
+                        : theme === 'superman'
+                        ? 'bg-blue-900/30 border border-blue-500/50 text-red-400 hover:bg-blue-900/60 shadow-[0_0_10px_rgba(59,130,246,0.2)]'
+                        : 'bg-white border border-gray-300 text-gray-800 hover:bg-gray-50 hover:shadow'
+                    }`}
                   >
                     <FiGithub /> Code
                   </motion.a>
@@ -192,7 +208,15 @@ const Projects = ({ theme }) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white rounded-lg hover:shadow-xl hover:shadow-white/30 border border-white/30 transition-all backdrop-blur-sm hover:from-white/30 hover:via-gray-200/30 hover:to-white/30"
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all backdrop-blur-sm ${
+                      theme === 'dark'
+                        ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white hover:shadow-xl hover:shadow-white/30 border border-white/30 hover:from-white/30 hover:via-gray-200/30 hover:to-white/30'
+                        : theme === 'marvel'
+                        ? 'bg-gradient-to-r from-red-600/50 via-red-500/50 to-red-600/50 text-yellow-400 border border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.4)] hover:shadow-lg'
+                        : theme === 'superman'
+                        ? 'bg-gradient-to-r from-blue-600/50 via-red-500/50 to-blue-600/50 text-yellow-400 border border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-lg'
+                        : 'bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 text-white shadow hover:shadow-lg'
+                    }`}
                   >
                     <FiExternalLink /> Live
                   </motion.a>

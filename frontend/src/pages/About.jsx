@@ -1,14 +1,22 @@
+import React, { useRef, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
-import { FiChevronDown } from 'react-icons/fi'
+import { FiChevronDown, FiUsers } from 'react-icons/fi'
+import { 
+  SiJavascript, SiPython, SiReact, SiNodedotjs, SiExpress, SiAngular, 
+  SiMongodb, SiSupabase, SiNextdotjs, SiTailwindcss, SiGithub, 
+  SiHtml5, SiCss3, SiCplusplus, SiFastapi, SiSpringboot, SiPostgresql, 
+  SiJsonwebtokens, SiVisualstudiocode, SiPostman, SiVercel, SiThunderbird, 
+  SiPowerbi, SiFramer, SiGithubactions, SiDocker, SiGoogle, SiMicrosoft, SiInfosys
+} from 'react-icons/si'
+import { FaJava, FaCertificate } from 'react-icons/fa'
+import { AiOutlineApi } from 'react-icons/ai'
 
 const ProfileImage = ({ theme }) => {
   const [imageSrc, setImageSrc] = useState(null)
   const [showFallback, setShowFallback] = useState(true)
 
   useEffect(() => {
-    // Try different image formats
     const imageFormats = ['/profile-pic.jpg', '/profile-pic.png', '/profile-pic.jpeg', '/profile.jpg', '/profile.png']
     let currentIndex = 0
 
@@ -66,6 +74,38 @@ const ProfileImage = ({ theme }) => {
   )
 }
 
+const skillIcons = {
+  'JavaScript (ES6+)': { icon: SiJavascript, color: '#F7DF1E' },
+  'Python': { icon: SiPython, color: '#3776AB' },
+  'Java': { icon: FaJava, color: '#007396' },
+  'React.js': { icon: SiReact, color: '#61DAFB' },
+  'Node.js': { icon: SiNodedotjs, color: '#339933' },
+  'Express.js': { icon: SiExpress, color: '#FFFFFF' },
+  'Angular': { icon: SiAngular, color: '#DD0031' },
+  'MongoDB': { icon: SiMongodb, color: '#47A248' },
+  'Supabase': { icon: SiSupabase, color: '#3ECF8E' },
+  'Next.js': { icon: SiNextdotjs, color: '#FFFFFF' },
+  'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4' },
+  'Git/GitHub': { icon: SiGithub, color: '#FFFFFF' },
+  'RESTful APIs': { icon: AiOutlineApi, color: '#0084FF' },
+  'HTML5 & CSS3': { icon: SiHtml5, color: '#E34F26' },
+  'C/C++': { icon: SiCplusplus, color: '#00599C' },
+  'FastAPI': { icon: SiFastapi, color: '#05998B' },
+  'Spring Boot': { icon: SiSpringboot, color: '#6DB33F' },
+  'PostgreSQL': { icon: SiPostgresql, color: '#4169E1' },
+  'JWT': { icon: SiJsonwebtokens, color: '#000000' },
+  'VS Code': { icon: SiVisualstudiocode, color: '#007ACC' },
+  'Postman': { icon: SiPostman, color: '#FF6C37' },
+  'Vercel': { icon: SiVercel, color: '#FFFFFF' },
+  'Thunderhead': { icon: SiThunderbird, color: '#0A84FF' },
+  'PowerBI': { icon: SiPowerbi, color: '#F2C811' },
+  'Framer Motion': { icon: SiFramer, color: '#0055FF' },
+  'Agile & Scrum': { icon: FiUsers, color: '#00A3BF' },
+  'CI/CD': { icon: SiGithubactions, color: '#2088FF' },
+  'Docker': { icon: SiDocker, color: '#2496ED' },
+  'Gemini AI': { icon: SiGoogle, color: '#4285F4' },
+};
+
 const About = ({ theme }) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
@@ -91,7 +131,6 @@ const About = ({ theme }) => {
     'Spring Boot',
     'PostgreSQL',
     'JWT',
-
   ]
 
   const tools = [
@@ -106,6 +145,65 @@ const About = ({ theme }) => {
     'Docker',
     'Gemini AI',
   ]
+
+  const certifications = [
+    {
+      title: "Microsoft Azure AI Essentials Professional Certificate",
+      issuer: "Microsoft",
+      date: "Dec '25",
+      link: "https://drive.google.com/file/d/18nYl_fTPFYcQmzhpmyYDe61qOSIjK16D/view",
+      icon: SiMicrosoft,
+      color: "#00A4EF"
+    },
+    {
+      title: "Angular Course",
+      issuer: "Infosys Springboard",
+      date: "Oct '25",
+      link: "https://drive.google.com/file/d/1ZwsHYJGyvfuVl2__oQst-iejA2squuX9/view",
+      icon: SiAngular,
+      color: "#DD0031"
+    },
+    {
+      title: "Agile Scrum in Practice",
+      issuer: "Infosys Springboard",
+      date: "Oct '25",
+      link: "https://drive.google.com/file/d/1CuzVphCRe-9PmbCtigbTLfHhMl7QCxhP/view",
+      icon: SiInfosys,
+      color: "#007CC3"
+    },
+    {
+      title: "AINACT 2025",
+      issuer: "Noukri.com",
+      date: "May '25",
+      link: "https://drive.google.com/file/d/1tYs-KJGgZRRThycKJ8EPayfRUG_3gtxW/view",
+      icon: FaCertificate,
+      color: "#4285F4"
+    },
+    {
+      title: "Web Developer Internship",
+      issuer: "Infotact Solutions Pvt Ltd",
+      date: "Aug '25",
+      link: "https://drive.google.com/file/d/1gbIFaftNlM-5YnLsT480FUXo5ixGyehm/view",
+      icon: SiReact,
+      color: "#61DAFB"
+    },
+    {
+      title: "PowerBI Workshop",
+      issuer: "officeMaster",
+      date: "Apr '25",
+      link: "https://drive.google.com/file/d/1wOLFXI_c3hskQCZ7BGyXF85aqaZA2NxI/view",
+      icon: SiPowerbi,
+      color: "#F2C811"
+    },
+    {
+      title: "Web Developer Internship",
+      issuer: "Labmentix Pvt Ltd",
+      date: "Mar '25",
+      link: "https://drive.google.com/file/d/1E0Czrsasi_-f_dCyiKZ0oLnjbn-g7_oP/view",
+      icon: SiNodedotjs,
+      color: "#339933"
+    }
+  ];
 
   return (
     <div className="min-h-screen py-20 px-4">
@@ -186,16 +284,21 @@ const About = ({ theme }) => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.1 }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm transition-all flex items-center gap-2 ${
                       theme === 'dark'
                         ? 'bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 text-white border border-white/30'
                         : theme === 'marvel'
-                        ? 'bg-red-900/40 text-yellow-400 border border-red-500/50'
+                        ? 'bg-red-900/40 text-yellow-400 border border-red-500/50 hover:bg-red-800/60'
                         : theme === 'superman'
-                        ? 'bg-blue-900/40 text-red-500 border border-blue-500/50'
-                        : 'bg-purple-100 text-purple-700 border border-purple-200'
+                        ? 'bg-blue-900/40 text-red-500 border border-blue-500/50 hover:bg-blue-800/60'
+                        : 'bg-white text-gray-800 border border-gray-200 hover:shadow-md'
                     }`}
                   >
+                    {skillIcons[skill] && (
+                      <span className="text-lg" style={{ color: skillIcons[skill].color }}>
+                        {React.createElement(skillIcons[skill].icon)}
+                      </span>
+                    )}
                     {skill}
                   </motion.span>
                 ))}
@@ -216,15 +319,20 @@ const About = ({ theme }) => {
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: (skills.length + index) * 0.1 }}
                     whileHover={{ scale: 1.1 }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${theme === 'dark'
-                        ? 'bg-gray-700 text-gray-200'
+                    className={`px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm transition-all flex items-center gap-2 ${theme === 'dark'
+                        ? 'bg-gray-700 text-gray-200 border border-gray-600'
                         : theme === 'marvel'
-                        ? 'bg-red-800 text-yellow-300'
+                        ? 'bg-red-800/40 text-yellow-300 border border-red-700/50'
                         : theme === 'superman'
-                        ? 'bg-blue-800 text-red-300'
-                        : 'bg-blue-100 text-blue-700'
+                        ? 'bg-blue-800/40 text-red-300 border border-blue-700/50'
+                        : 'bg-white text-blue-700 border border-blue-200 hover:shadow-md'
                       }`}
                   >
+                    {skillIcons[tool] && (
+                      <span className="text-lg" style={{ color: skillIcons[tool].color }}>
+                        {React.createElement(skillIcons[tool].icon)}
+                      </span>
+                    )}
                     {tool}
                   </motion.span>
                 ))}
@@ -494,201 +602,36 @@ const About = ({ theme }) => {
             Certifications
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
-            <motion.a
-              href="https://drive.google.com/file/d/18nYl_fTPFYcQmzhpmyYDe61qOSIjK16D/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            {certifications.map((cert, index) => (
+              <motion.a
+                key={index}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.02, y: -5 }}
+                className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
+                  } transition-all cursor-pointer group`}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="p-3 bg-gradient-to-r from-white/10 to-white/5 rounded-lg border border-white/20 group-hover:border-white/40 transition-colors">
+                    <span className="text-2xl" style={{ color: cert.color }}>
+                      {React.createElement(cert.icon)}
+                    </span>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
+                      {cert.title}
+                    </h3>
+                    <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
+                      {cert.issuer} | {cert.date}
+                    </p>
+                  </div>
+                  <svg className="w-5 h-5 text-white/40 group-hover:text-white/70 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    Microsoft Azure AI Essentials Professional Certificate
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    Microsoft | Dec '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/1ZwsHYJGyvfuVl2__oQst-iejA2squuX9/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    Angular Course
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    Infosys Springboard | Oct '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/1CuzVphCRe-9PmbCtigbTLfHhMl7QCxhP/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    Agile Scrum in Practice
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    Infosys Springboard | Oct '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/1tYs-KJGgZRRThycKJ8EPayfRUG_3gtxW/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    AINACT 2025
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    Noukri.com | May '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/1gbIFaftNlM-5YnLsT480FUXo5ixGyehm/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    Web Developer Internship
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    Infotact Solutions Pvt Ltd | Aug '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/1wOLFXI_c3hskQCZ7BGyXF85aqaZA2NxI/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    PowerBI Workshop
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    officeMaster | Apr '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
-
-            <motion.a
-              href="https://drive.google.com/file/d/1E0Czrsasi_-f_dCyiKZ0oLnjbn-g7_oP/view"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02, y: -5 }}
-              className={`p-4 rounded-lg border border-white/20 backdrop-blur-sm ${theme === 'dark' ? 'bg-black/20 hover:bg-black/30' : 'bg-white/10 hover:bg-white/20'
-                } transition-all cursor-pointer`}
-            >
-              <div className="flex items-start gap-3">
-                <div className="p-2 bg-gradient-to-r from-white/20 via-gray-200/20 to-white/20 rounded-lg border border-white/30">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <h3 className={`font-semibold mb-1 ${theme === 'dark' ? 'text-white' : theme === 'marvel' ? 'text-gray-100' : theme === 'superman' ? 'text-blue-200' : 'text-gray-800'}`}>
-                    Web Developer Internship
-                  </h3>
-                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : theme === 'marvel' ? 'text-gray-300' : theme === 'superman' ? 'text-gray-300' : 'text-gray-500'}`}>
-                    Labmentix Pvt Ltd | Mar '25
-                  </p>
-                </div>
-                <svg className="w-5 h-5 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </div>
-            </motion.a>
+              </motion.a>
+            ))}
           </div>
         </motion.div>
 
@@ -741,4 +684,3 @@ const About = ({ theme }) => {
 }
 
 export default About
-
